@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SubMenuItem } from "./routes";
 
-const SidebarDropdown = ({ items }: {items: SubMenuItem[]}) => {
+const SidebarDropdown = React.memo(({ items }: {items: SubMenuItem[]}) => {
   const pathname = usePathname();
 
   return (
@@ -24,6 +24,8 @@ const SidebarDropdown = ({ items }: {items: SubMenuItem[]}) => {
       </ul>
     </>
   );
-};
+});
+
+SidebarDropdown.displayName = 'SidebarDropdown'
 
 export default SidebarDropdown;

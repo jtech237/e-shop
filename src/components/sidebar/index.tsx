@@ -8,6 +8,7 @@ import SidebarGroup from "./SidebarGroup";
 import SidebarItem from "./SidebarItem";
 import { usePathname } from "next/navigation";
 import useLocalStorage from "@/hooks/useLocalStorage";
+import { useCallback, useMemo } from "react";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -19,6 +20,19 @@ const pacifico = Pacifico({ subsets: ["latin"], weight: "400" });
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
     const pathname = usePathname()
     const [pageName,  setPageName] = useLocalStorage("selectedMenu", "dashboard")
+
+    const toggleSidebar = useCallback(() => setIsOpen(!isOpen), [isOpen, setIsOpen])
+
+    const menuContent = useMemo(
+        () => menuGroups.map((group, groupIndex) => (
+            <SidebarGroup key={groupIndex} name={group.name}>
+                {group.menuItems.map((item, itemIndex) => (
+                    <SidebarItem item={item} key={itemIndex} pageName={pageName} setPageName={setPageName}/>
+                ))}
+            </SidebarGroup>
+        )),
+        [pageName]
+    )
   return (
     <ClickOutside onClick={() => setIsOpen(false)}>
       <aside
@@ -34,7 +48,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
           </Link>
           <button
             className="block lg:hidden"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={toggleSidebar}
           >
             <ArrowLeft />
           </button>
@@ -42,13 +56,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
 
         <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
           <nav className="mt-5 px-4 py-4 lg:mt-9 lg:px-6">
-            {menuGroups.map((group, groupIndex) => (
-                <SidebarGroup key={groupIndex} name={group.name}>
-                    {group.menuItems.map((item, itemIndex) => (
-                        <SidebarItem item={item} key={itemIndex} pageName={pageName} setPageName={setPageName}/>
-                    ))}
-                </SidebarGroup>
-            ))}
+            {menuContent}
           </nav>
         </div>
       </aside>

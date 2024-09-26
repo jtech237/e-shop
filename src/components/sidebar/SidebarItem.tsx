@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import { MenuItem } from "./routes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import SidebarDropdown from "./SidebarDropdown";
+import dynamic from "next/dynamic";
 
 interface SidebarItemProps {
   item: MenuItem;
@@ -11,7 +11,7 @@ interface SidebarItemProps {
   setPageName: (pageName: string) => void;
 }
 
-const SidebarItem: React.FC<SidebarItemProps> = ({
+const SidebarItem: React.FC<SidebarItemProps> = React.memo(({
   item,
   pageName,
   setPageName,
@@ -19,24 +19,28 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   const pathname = usePathname();
 
   // Détermine si le menu est actif
-  const isActive = (item: MenuItem): boolean => {
+  const isActive = useCallback((item: MenuItem): boolean => {
     if (item.route === pathname) return true;
     if (item.children) {
       return item.children.some((child) => isActive(child as MenuItem));
     }
     return false;
-  };
+  }, [pathname]);
 
-  const isItemActive = isActive(item);
+  const isItemActive = useMemo(() => isActive(item), [item, isActive]);
 
   // Gestion de l'expansion du menu : ouvert si actif ou si pageName est défini
   const isMenuOpen = isItemActive || pageName === item.label.toLowerCase();
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     const updatedPageName =
       pageName !== item.label.toLowerCase() ? item.label.toLowerCase() : "";
     setPageName(updatedPageName);
-  };
+  }, [pageName, item.label, setPageName]);
+
+  const SidebarDropdown = dynamic(() => import('./SidebarDropdown'), {
+    loading: () => <div>Loading....</div>
+  })
 
   return (
     <>
@@ -84,6 +88,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
       </li>
     </>
   );
-};
+});
+SidebarItem.displayName = 'SidebarItem'
 
 export default SidebarItem;
