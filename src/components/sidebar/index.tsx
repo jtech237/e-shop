@@ -43,7 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
       >
         {/* <!-- Sidebar header --> */}
         <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
-          <Link href="/admin" className={pacifico.className}>
+          <Link href="/admin" className={`${pacifico.className} text-lg md:text-2xl`}>
             E-SHOP
           </Link>
           <button

@@ -2,12 +2,14 @@
 
 import { ReactNode, useState } from "react";
 import Sidebar from "../sidebar";
+import Header from "../header";
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <>
-      <div className="flex">
+      <div className="dark:bg-boxdark-2 dark:text-bodydark">
+        <div className="flex">
         {/** <!-- Sidebar start --> */}
         <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
         {/** <!-- Sidebar end --> */}
@@ -15,7 +17,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
         {/** <!-- Content start --> */}
         <div className="relative flex flex-1 flex-col lg:ml-72.5">
           {/** <!-- Header start --> */}
-          {/* <Header /> */}
+          <Header sidebarIsOpen={sidebarOpen} setIsSidebarOpen={setSidebarOpen} />
           {/** <!-- Header end --> */}
 
           {/** <!-- Main content start --> */}
@@ -28,6 +30,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
           {/** <!-- Main content start --> */}
         </div>
         {/** <!-- Content end --> */}
+      </div>
       </div>
     </>
   );
