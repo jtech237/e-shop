@@ -1,0 +1,26 @@
+export default function Admin(){
+    return (
+        <div>
+            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem nisi enim nam, quidem, suscipit error hic ex maxime, voluptates libero esse. Sapiente corporis dolorum ad nam vero porro, veritatis accusamus.</div>
+            <div>Architecto dolores optio porro quibusdam. Labore debitis provident hic accusamus veritatis eaque, consectetur, facere id, expedita neque ipsum eius delectus harum! Molestias fuga impedit tempora illo odit iure neque ea!</div>
+            <div>Nemo saepe cupiditate vero, necessitatibus adipisci perferendis fuga, quis omnis possimus molestias nulla in! Nobis, totam, placeat saepe velit odio repellendus maiores optio ex rerum, rem repellat incidunt sequi vel?</div>
+            <div>Quaerat, exercitationem harum dolorum cupiditate rerum pariatur, cum illum quas nisi quo accusamus repudiandae minima atque, ipsum ab aperiam dolores architecto consequatur ipsam assumenda. Ipsum qui error ipsa natus maiores!</div>
+            <div>Rem quo facere animi ipsum temporibus excepturi cupiditate eveniet expedita libero asperiores recusandae et non quos molestiae unde consequatur delectus, eum voluptatum obcaecati, similique id. Cupiditate iure nemo dolore illum!</div>
+            <div>Ullam possimus nemo voluptates doloremque esse corporis autem nam. Porro nostrum dignissimos harum saepe corporis vel maiores tempora beatae voluptatum id unde repudiandae dolore ut asperiores, omnis soluta autem eum!</div>
+            <div>Quos veritatis eligendi, eius deleniti natus quibusdam distinctio ullam repudiandae obcaecati laudantium temporibus facilis molestiae mollitia ad ea in modi doloribus quia hic aut animi. Dignissimos consequatur vero maiores velit?</div>
+            <div>Tempore aut aliquam amet deserunt. Ea voluptatem ullam quidem architecto iste sequi animi rem possimus ipsam nostrum, inventore laboriosam? Eligendi assumenda amet officiis dolor hic voluptatum fugit? Sequi, illo consectetur.</div>
+            <div>Exercitationem, odit? Doloribus, hic vitae vero mollitia totam iste facilis quia exercitationem accusantium? Quidem nobis vel voluptatibus delectus odit quas? Reiciendis, ipsum. Provident quod, delectus labore rem odit inventore quae.</div>
+            <div>Repudiandae id magni rerum error, temporibus, obcaecati ex laboriosam suscipit in officiis, quae debitis officia consequatur vero est dicta ducimus praesentium dolores atque eos itaque voluptatem similique illo qui! Laborum!</div>
+            <div>Alias sed quasi molestias magni aspernatur deleniti ducimus, impedit natus eligendi omnis ipsa, cum cupiditate id voluptate odit accusantium? Doloremque rem ipsa voluptatem laboriosam fugit. Doloribus modi enim architecto explicabo.</div>
+            <div>Eos harum in dolores aut commodi expedita at, earum necessitatibus nihil repudiandae ullam cumque laudantium eum maiores doloremque maxime rem officia, sint ipsam impedit enim iure culpa voluptatem quasi. Consequatur.</div>
+            <div>Quo molestias laboriosam, ipsum itaque perspiciatis eum molestiae quia voluptas accusamus delectus rerum, blanditiis eligendi, fugiat ipsam eius quis adipisci aperiam dolor velit aliquam similique. Error perspiciatis quo earum quam!</div>
+            <div>Voluptatibus in excepturi cum, nisi temporibus officia deserunt nulla similique consequuntur at quae libero rem reiciendis sunt aspernatur dolores error saepe qui, explicabo labore! Quia est alias minima sunt mollitia.</div>
+            <div>Tempora, atque distinctio. Ex fugiat voluptatem dicta! Repellendus inventore dicta reprehenderit officiis ab cum aperiam consectetur voluptates impedit id, sequi, velit eos ipsa, pariatur nobis consequuntur praesentium. Dolorum, voluptatum non!</div>
+            <div>Voluptatem odio magni, consequuntur labore, soluta, harum doloribus dolorem amet voluptate omnis sequi. Aut, reiciendis nemo laboriosam ratione sapiente magni libero saepe neque dicta pariatur? Nisi vel accusantium iusto quas.</div>
+            <div>Asperiores illo, velit, eius quas sit magni porro quibusdam dolorum at, nisi sapiente adipisci in quidem deserunt esse incidunt neque quam nemo harum. Quibusdam voluptatibus dolores consequuntur ut, adipisci dicta.</div>
+            <div>Deleniti tempore cumque rerum, animi veritatis eaque enim dolores fuga nemo perferendis corrupti cum minus iure provident odit? Quod perspiciatis eligendi, dolores expedita exercitationem placeat minima ratione blanditiis tenetur officiis?</div>
+            <div>Repudiandae repellat, voluptatum eaque corporis asperiores voluptate. Expedita vitae dolorem modi ipsam aliquam obcaecati ipsum eos natus in. Officia voluptates atque labore eligendi tempora nam magni explicabo vel quisquam corporis!</div>
+            <div>Culpa animi maxime facere, harum nemo magnam autem esse quasi quam pariatur nisi non. Dignissimos deserunt saepe quia eligendi enim ipsam, optio esse commodi quod nobis ea laboriosam, nulla tempora.</div>
+        </div>
+    )
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode, useState } from "react";
+import Sidebar from "../sidebar";
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -8,7 +9,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     <>
       <div className="flex">
         {/** <!-- Sidebar start --> */}
-        {/* <Sidebar /> */}
+        <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
         {/** <!-- Sidebar end --> */}
 
         {/** <!-- Content start --> */}
