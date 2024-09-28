@@ -18,6 +18,8 @@ model Image{
   url String @db.VarChar(255)
   alt String @db.VarChar(255)
 
+  path String? @db.VarChar(255)
+
   categories Category[]
 
   createdAt DateTime @default(now())
