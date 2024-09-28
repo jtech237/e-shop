@@ -107,7 +107,9 @@ export default function CategoryPage() {
               </div>
               <div className="col-start-3 sm:col-start-4 flex items-center">
                 <p className="text-sm text-black dark:text-white">
-                  <Link href="">Parent</Link>
+                  {category.parent ? (
+                    <Link href={`/admin/categories/${category.parentId}`}>{category.parent.name}</Link>
+                  ) : (<span>No Parent</span>)}
                 </p>
               </div>
               <div className="col-span-2 col-start-5 hidden sm:flex items-center gap-2">

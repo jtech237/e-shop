@@ -1,4 +1,5 @@
 import { errorResponse } from "@/lib/api";
+import { validateParentCategory, calculateCategoryDepth } from "@/lib/category";
 import prisma from "@/lib/db";
 import { deleteFile, getFile, uploadFile } from "@/lib/firebase/storage";
 import { NextRequest, NextResponse } from "next/server";
@@ -31,6 +32,10 @@ const categoryCreateSchema = z.object({
       (file) => !file || ACCEPTED_FILES.includes(file?.type),
       "Invalid file. Choose either JPEG or PNG image"
     ),
+  parentId: z
+    .union([z.string().length(0), z.string().min(1)])
+    .optional()
+    .transform((e) => (!e || e === "" ? undefined : parseInt(e, 10))),
 });
 
 // Fonction GET pour récupérer les catégories
@@ -44,6 +49,12 @@ async function GET(req: NextRequest) {
             alt: true,
           },
         },
+        parent: {
+          select: {
+            id: true,
+            name: true,
+          }
+        }
       },
     });
 
@@ -99,7 +110,11 @@ async function POST(req: NextRequest) {
     }
 
     // Traiter l'upload de fichier si une image est présente
-    const { image, ...data } = parsedData.data;
+    const { image, parentId, ...data } = parsedData.data;
+    // Validate and process parent category
+    const parent = parentId ? await validateParentCategory(parentId) : null;
+    const depth = calculateCategoryDepth(parent);
+
     const file = await handleImageUpload(image);
 
     // Créer la catégorie dans la base de données
@@ -107,6 +122,10 @@ async function POST(req: NextRequest) {
       const result = await prisma.category.create({
         data: {
           ...data,
+          depth: depth,
+          ...(parent && {
+            parent: { connect: { id: parent.id } },
+          }),
           ...(file && {
             image: {
               create: {
@@ -119,6 +138,7 @@ async function POST(req: NextRequest) {
         },
         include: {
           ...(file && { image: { select: { url: true, alt: true } } }),
+          ...(parent && { parent: { select: { id: true, name: true } } }),
         },
       });
 
@@ -135,7 +155,7 @@ async function POST(req: NextRequest) {
       return errorResponse({
         code: 500,
         message: "Failed to create category",
-        errors: error
+        errors: error,
       });
     }
   } catch (error: any) {

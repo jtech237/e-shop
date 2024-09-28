@@ -14,4 +14,7 @@ export interface Category extends TimeStamp{
     description?: string
     imageId?: number | null
     image?: Image | null
+    parentId?: number | null
+    parent?:  Category | null
+    depth: number
 }

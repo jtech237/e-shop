@@ -35,6 +35,8 @@ model Category{
   imageId Int?
   image Image? @relation(references: [id], fields: [imageId])
 
+  depth Int @db.SmallInt  @default(0)
+
   parentId Int?
   parent Category? @relation("CategoryParent", references: [id],  fields: [parentId], onDelete: SetNull)
   children Category[] @relation("CategoryParent")
