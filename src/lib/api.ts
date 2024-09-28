@@ -2,7 +2,6 @@ import { PrismaError } from "@/types/api";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { NextResponse } from "next/server";
 
-
 export const errorResponse = ({
   message = "Internal server error",
   code = 500,
@@ -10,7 +9,7 @@ export const errorResponse = ({
 }: {
   message?: string;
   code?: number;
-  errors: PrismaError | any;
+  errors?: PrismaError | any;
 }) => {
   return NextResponse.json(
     {
@@ -23,9 +22,16 @@ export const errorResponse = ({
   );
 };
 
-export function formatPrismaError (error: PrismaClientKnownRequestError): PrismaError {
+export function formatPrismaError(
+  error: PrismaClientKnownRequestError
+): PrismaError {
   return {
     code: error.code,
-    meta: error.meta
-  }
+    meta: error.meta,
+  };
+}
+
+export async function uploadImage(to: string) {
+  
+  
 }
