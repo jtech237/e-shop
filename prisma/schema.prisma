@@ -35,6 +35,10 @@ model Category{
   imageId Int?
   image Image? @relation(references: [id], fields: [imageId])
 
+  parentId Int?
+  parent Category? @relation("CategoryParent", references: [id],  fields: [parentId], onDelete: SetNull)
+  children Category[] @relation("CategoryParent")
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
